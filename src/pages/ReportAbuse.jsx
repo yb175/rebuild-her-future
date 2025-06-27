@@ -1,278 +1,228 @@
 
 import React, { useState } from 'react';
-import { AlertTriangle, Phone, MessageCircle, MapPin, Clock, Shield } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
+import { AlertTriangle, Phone, Shield, Users, ArrowLeft, Upload, MapPin } from 'lucide-react';
 
 const ReportAbuse = () => {
-  const [reportType, setReportType] = useState('');
+  const [selectedSupport, setSelectedSupport] = useState('');
   const [formData, setFormData] = useState({
     name: '',
+    contact: '',
     location: '',
-    urgency: '',
+    urgency: 'high',
     description: '',
-    evidence: null,
-    phone: '',
-    anonymous: false
+    evidence: null
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      if (reportType === 'sos') {
-        toast({
-          title: "SOS Alert Sent",
-          description: "Emergency services have been notified. An officer will reach you within 10 minutes.",
-          variant: "default"
-        });
-      } else {
-        toast({
-          title: "Report Submitted",
-          description: "Your report has been received. A counselor will contact you within 24 hours.",
-          variant: "default"
-        });
-      }
-      setIsSubmitting(false);
-      // Reset form
-      setFormData({
-        name: '',
-        location: '',
-        urgency: '',
-        description: '',
-        evidence: null,
-        phone: '',
-        anonymous: false
-      });
-    }, 2000);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    alert(`${selectedSupport} support request submitted. Help is on the way!`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-purple-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Report Abuse</h1>
-          <p className="text-lg text-gray-600">
-            Choose the type of support you need. All reports are handled with complete confidentiality.
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-pink-50 to-purple-50">
+      {/* Header */}
+      <div className="bg-white/90 backdrop-blur-lg shadow-lg border-b border-red-100">
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <Link to="/" className="inline-flex items-center text-gray-600 hover:text-red-600 transition-colors mb-4">
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Back to Home
+          </Link>
+          <div className="flex items-center">
+            <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-xl p-3 mr-4">
+              <AlertTriangle className="h-8 w-8 text-white" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">Report Abuse</h1>
+              <p className="text-gray-600">Get immediate help and support</p>
+            </div>
+          </div>
         </div>
+      </div>
 
+      <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Support Type Selection */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div 
-            className={`bg-white rounded-xl shadow-lg p-6 cursor-pointer border-2 transition-all ${
-              reportType === 'sos' ? 'border-red-500 ring-4 ring-red-100' : 'border-gray-200 hover:border-red-300'
+            className={`group cursor-pointer rounded-2xl p-6 border-2 transition-all duration-300 transform hover:-translate-y-1 ${
+              selectedSupport === 'SOS' 
+                ? 'border-red-500 bg-gradient-to-br from-red-50 to-pink-50 shadow-lg' 
+                : 'border-gray-200 bg-white/80 hover:border-red-300 hover:shadow-lg'
             }`}
-            onClick={() => setReportType('sos')}
+            onClick={() => setSelectedSupport('SOS')}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-red-100 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                <AlertTriangle className="h-6 w-6 text-red-600" />
+            <div className="flex items-center justify-between mb-4">
+              <div className={`rounded-xl p-3 ${
+                selectedSupport === 'SOS' 
+                  ? 'bg-gradient-to-r from-red-500 to-pink-500' 
+                  : 'bg-red-100 group-hover:bg-red-200'
+              } transition-all duration-300`}>
+                <AlertTriangle className={`h-8 w-8 ${selectedSupport === 'SOS' ? 'text-white' : 'text-red-600'}`} />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-red-600">SOS Support</h3>
-                <p className="text-sm text-gray-600">Immediate Emergency Response</p>
-              </div>
+              {selectedSupport === 'SOS' && (
+                <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              )}
             </div>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-center">
-                <Phone className="h-4 w-4 mr-2 text-red-500" />
-                Nearest officer dispatch
-              </li>
-              <li className="flex items-center">
-                <MapPin className="h-4 w-4 mr-2 text-red-500" />
-                Safe transport to rehab center
-              </li>
-              <li className="flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-red-500" />
-                Response within 10 minutes
-              </li>
-            </ul>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">SOS Support</h3>
+            <p className="text-gray-600 mb-4">Immediate emergency response with officer dispatch to nearest rehab center for your safety.</p>
+            <div className="bg-red-100 rounded-lg p-3">
+              <p className="text-sm text-red-700 font-medium">⚡ Instant Response • 🚔 Officer Dispatch • 🏥 Safe Transfer</p>
+            </div>
           </div>
 
           <div 
-            className={`bg-white rounded-xl shadow-lg p-6 cursor-pointer border-2 transition-all ${
-              reportType === 'moderate' ? 'border-purple-500 ring-4 ring-purple-100' : 'border-gray-200 hover:border-purple-300'
+            className={`group cursor-pointer rounded-2xl p-6 border-2 transition-all duration-300 transform hover:-translate-y-1 ${
+              selectedSupport === 'Moderate' 
+                ? 'border-blue-500 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg' 
+                : 'border-gray-200 bg-white/80 hover:border-blue-300 hover:shadow-lg'
             }`}
-            onClick={() => setReportType('moderate')}
+            onClick={() => setSelectedSupport('Moderate')}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                <MessageCircle className="h-6 w-6 text-purple-600" />
+            <div className="flex items-center justify-between mb-4">
+              <div className={`rounded-xl p-3 ${
+                selectedSupport === 'Moderate' 
+                  ? 'bg-gradient-to-r from-blue-500 to-indigo-500' 
+                  : 'bg-blue-100 group-hover:bg-blue-200'
+              } transition-all duration-300`}>
+                <Users className={`h-8 w-8 ${selectedSupport === 'Moderate' ? 'text-white' : 'text-blue-600'}`} />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-purple-600">Moderate Support</h3>
-                <p className="text-sm text-gray-600">Mediation & Counseling</p>
-              </div>
+              {selectedSupport === 'Moderate' && (
+                <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+              )}
             </div>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-center">
-                <MessageCircle className="h-4 w-4 mr-2 text-purple-500" />
-                Professional mediation
-              </li>
-              <li className="flex items-center">
-                <Shield className="h-4 w-4 mr-2 text-purple-500" />
-                Counseling sessions
-              </li>
-              <li className="flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-purple-500" />
-                Response within 24 hours
-              </li>
-            </ul>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Moderate Support</h3>
+            <p className="text-gray-600 mb-4">Professional mediation and counseling services for resolution and healing.</p>
+            <div className="bg-blue-100 rounded-lg p-3">
+              <p className="text-sm text-blue-700 font-medium">🤝 Mediation • 💬 Counseling • 📋 Support Plan</p>
+            </div>
           </div>
         </div>
 
         {/* Report Form */}
-        {reportType && (
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-semibold mb-6">
-              {reportType === 'sos' ? 'Emergency Report Form' : 'Support Request Form'}
-            </h2>
-            
+        {selectedSupport && (
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div className="flex items-center mb-6">
+              <div className={`rounded-xl p-2 mr-3 ${
+                selectedSupport === 'SOS' 
+                  ? 'bg-gradient-to-r from-red-500 to-pink-500' 
+                  : 'bg-gradient-to-r from-blue-500 to-indigo-500'
+              }`}>
+                <Shield className="h-6 w-6 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">
+                {selectedSupport} Support Request
+              </h2>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Name {formData.anonymous && '(Optional)'}
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Full Name
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your name"
                     value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    required={!formData.anonymous}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    required
                   />
                 </div>
-                
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Contact Number
                   </label>
                   <input
                     type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    placeholder="+1 (555) 000-0000"
+                    value={formData.contact}
+                    onChange={(e) => setFormData({...formData, contact: e.target.value})}
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Location/Address
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <MapPin className="inline h-4 w-4 mr-1" />
+                  Current Location
                 </label>
                 <input
                   type="text"
-                  name="location"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Street address, city, state"
                   value={formData.location}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  onChange={(e) => setFormData({...formData, location: e.target.value})}
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Urgency Level
-                </label>
-                <select
-                  name="urgency"
-                  value={formData.urgency}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  required
-                >
-                  <option value="">Select urgency level</option>
-                  <option value="critical">Critical - Immediate danger</option>
-                  <option value="high">High - Ongoing threat</option>
-                  <option value="medium">Medium - Recent incident</option>
-                  <option value="low">Low - Seeking advice</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Describe the Situation
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Situation Description
                 </label>
                 <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
                   rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="Please provide details about the situation. This information will be kept confidential."
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Please describe your situation..."
+                  value={formData.description}
+                  onChange={(e) => setFormData({...formData, description: e.target.value})}
                   required
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Evidence (Optional)
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Upload Evidence (Optional)
                 </label>
-                <input
-                  type="file"
-                  name="evidence"
-                  onChange={handleInputChange}
-                  multiple
-                  accept="image/*,audio/*,video/*,.pdf"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-                <p className="text-sm text-gray-500 mt-1">
-                  Upload photos, audio recordings, or documents. All files are encrypted and securely stored.
-                </p>
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-purple-400 transition-colors">
+                  <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-600">Drag and drop files here, or click to select</p>
+                  <input type="file" className="hidden" multiple accept="image/*,video/*,audio/*" />
+                </div>
               </div>
 
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="anonymous"
-                  checked={formData.anonymous}
-                  onChange={handleInputChange}
-                  className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
-                />
-                <label className="ml-2 text-sm text-gray-700">
-                  Submit this report anonymously
-                </label>
-              </div>
-
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="button"
-                  onClick={() => setReportType('')}
-                  className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
-                >
-                  Back
-                </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`px-6 py-2 rounded-lg text-white font-semibold transition-colors ${
-                    reportType === 'sos' 
-                      ? 'bg-red-600 hover:bg-red-700' 
-                      : 'bg-purple-600 hover:bg-purple-700'
-                  } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
-                  {isSubmitting ? 'Submitting...' : 
-                   reportType === 'sos' ? 'Send SOS Alert' : 'Submit Report'}
-                </button>
-              </div>
+              <button
+                type="submit"
+                className={`w-full py-4 px-6 rounded-xl text-white font-semibold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl ${
+                  selectedSupport === 'SOS'
+                    ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600'
+                    : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600'
+                }`}
+              >
+                Submit {selectedSupport} Request
+              </button>
             </form>
           </div>
         )}
+
+        {/* Emergency Contacts */}
+        <div className="mt-8 bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl p-6 border border-orange-200">
+          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+            <Phone className="h-5 w-5 mr-2 text-orange-600" />
+            Emergency Contacts
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <div className="bg-white/80 rounded-lg p-3">
+              <p className="font-semibold text-gray-800">Emergency Services</p>
+              <p className="text-gray-600">911</p>
+            </div>
+            <div className="bg-white/80 rounded-lg p-3">
+              <p className="font-semibold text-gray-800">Domestic Violence Hotline</p>
+              <p className="text-gray-600">1-800-799-7233</p>
+            </div>
+            <div className="bg-white/80 rounded-lg p-3">
+              <p className="font-semibold text-gray-800">Crisis Text Line</p>
+              <p className="text-gray-600">Text HOME to 741741</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
