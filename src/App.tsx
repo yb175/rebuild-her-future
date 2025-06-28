@@ -10,6 +10,7 @@ import AIFeatures from "./pages/AIFeatures";
 import Blockchain from "./pages/Blockchain";
 import ChatBot from "./pages/ChatBot";
 import NotFound from "./pages/NotFound";
+import "./index.css";
 
 const queryClient = new QueryClient();
 
