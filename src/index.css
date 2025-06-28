@@ -10,11 +10,12 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding-top: 50px; 
   font-family: 'Inter', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   overflow-x: hidden;
+
 }
 
 .container {
@@ -24,6 +25,7 @@ body {
 }
 
 .navbar {
+  height: 50px;
   z-index: 1000;
   position: fixed;
   top: 0;

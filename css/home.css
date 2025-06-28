@@ -170,6 +170,7 @@ input:focus, textarea:focus {
   margin-left: 2vh;
 }
 #hero-container {
+  transform: translateY(-20%);
   width: 100%;
   height: 50vh;
   display: flex;
