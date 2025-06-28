@@ -1,0 +1,174 @@
+.ai-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ebf8ff, #f3e8ff);
+  padding: 2rem;
+}
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ai-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.ai-header p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #4a5568;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.ai-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.ai-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.ai-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.green {
+  background-color: #c6f6d5;
+  color: #2f855a;
+}
+
+.purple {
+  background-color: #e9d8fd;
+  color: #6b46c1;
+}
+
+.ai-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ai-section select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ai-script {
+  background-color: #edf2f7;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.ai-keywords {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ai-keyword {
+  background-color: #e9d8fd;
+  color: #6b46c1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.green-btn, .red-btn, .purple-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.green-btn {
+  background-color: #48bb78;
+  color: white;
+}
+
+.green-btn:hover {
+  background-color: #38a169;
+}
+
+.red-btn {
+  background-color: #f56565;
+  color: white;
+}
+
+.red-btn:hover {
+  background-color: #e53e3e;
+}
+
+.purple-btn {
+  background-color: #805ad5;
+  color: white;
+}
+
+.purple-btn:hover {
+  background-color: #6b46c1;
+}
+
+.ai-btn-icon {
+  margin-right: 0.5rem;
+}
+
+.ai-in-progress {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-in-progress.purple {
+  background-color: #faf5ff;
+  border-color: #e9d8fd;
+}
+
+.ai-pulse {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #48bb78;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.ai-pulse.purple {
+  background-color: #805ad5;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
