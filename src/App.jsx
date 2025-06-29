@@ -23,7 +23,7 @@ const App = () => (
 
         {/* ✅ Navbar */}
         <div className="navbar">
-        <h1>Empower her</h1>
+        <h1>Dhvani</h1>
         <div>
             <Link to="/">Home</Link>
             <Link to="/report">Report</Link>
