@@ -16,7 +16,7 @@ const Index = () => {
       <div id="features">
         <h1>Features</h1>
         <p className="text-[#0e151b] text-base font-normal leading-normal max-w-[720px]" style={{ whiteSpace: 'pre-wrap' }}>
-          EmpowerHer provides a comprehensive suite of tools designed to support and protect women<br />
+          Dhvani provides a comprehensive suite of tools designed to support and protect women<br />
           experiencing domestic violence. Our features are built with safety, security, and accessibility in mind.
         </p>
       </div>

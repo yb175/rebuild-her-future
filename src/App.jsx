@@ -26,10 +26,9 @@ const App = () => (
         <h1>Dhvani</h1>
         <div>
             <Link to="/">Home</Link>
-            <Link to="/report">Report</Link>
             <Link to="/about-us">About us</Link>
             <Link to="/resources">Resources</Link>
-            <button id="donate">Donate</button>
+            <Link to="/report"><button id="donate">Report</button></Link>
           </div>
         </div>
 
