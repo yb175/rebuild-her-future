@@ -1,14 +1,13 @@
 
-# SafeGuard - Domestic Violence Prevention Platform
+# Shltr - Domestic Violence Prevention Platform
 
-SafeGuard is a comprehensive web platform designed to combat domestic violence against women using cutting-edge AI and blockchain technologies. The platform provides immediate support, secure evidence storage, and intelligent safety features to protect victims and prevent abuse.
+Shltr is a comprehensive web platform designed to combat domestic violence against women using cutting-edge AI and blockchain technologies. The platform provides immediate support, secure evidence storage, and intelligent safety features to protect victims and prevent abuse.
 
 ## 🌟 Features
 
 ### 1. Emergency Reporting System
 - **SOS Support**: Immediate emergency response with officer dispatch to nearest rehab center
 - **Moderate Support**: Professional mediation and counseling services
-- **Anonymous Reporting**: Option to submit reports without revealing identity
 - **Evidence Upload**: Secure file upload for photos, audio, video, and documents
 
 ### 2. AI-Powered Safety Features
