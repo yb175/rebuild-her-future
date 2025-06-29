@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 
-function Message(canShow){
+function Message({canShow,mess}){
     const [show,getmess] = useState(true);
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -11,7 +11,7 @@ function Message(canShow){
     }, []);
     return(
         <div>
-            {show && <h1 id="message">nearest ncw officer is on the way</h1>}
+            {show && <h1 id="message">{mess}</h1>}
             
         </div>
     )

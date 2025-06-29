@@ -10,7 +10,7 @@ import Blockchain from "./pages/Blockchain";
 import ChatBot from "./pages/ChatBot";
 import NotFound from "./pages/NotFound";
 import "./index.css";
-
+import ScrollToTop from "./myComponents/scrollto";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -19,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+      <ScrollToTop/>
 
         {/* ✅ Navbar */}
         <div className="navbar">
@@ -54,7 +55,6 @@ const App = () => (
           }}>
           &copy; 2025 Empower Her. All rights reserved.
         </footer>
-
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

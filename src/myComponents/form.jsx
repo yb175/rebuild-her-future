@@ -60,7 +60,7 @@ function Form(){
 
             <button type="submit" id="donate" >Submit</button>
             </form>
-            {showMessage && <Message />}
+            {showMessage && <Message mess={"Your report has been submitted successfully"}/>}
         </div>
     )
 }

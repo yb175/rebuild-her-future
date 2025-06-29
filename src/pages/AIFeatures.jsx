@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mic, MicOff, Settings, Volume2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import Message from '../myComponents/message';
 const AIFeatures = () => {
   const [isListening, setIsListening] = useState(false);
   const [fakeCallActive, setFakeCallActive] = useState(false);
@@ -9,13 +10,17 @@ const AIFeatures = () => {
   const [voiceDetected, setVoiceDetected] = useState('');
   const [callScenario, setCallScenario] = useState('work');
   const { toast } = useToast();
+  const [messages, setMessages] = useState(true);
 
   const languages = [
     { code: 'english', name: 'English', keywords: ['help me', 'stop', 'no'] },
     { code: 'hindi', name: 'Hindi', keywords: ['bachao', 'madad karo', 'nahi'] },
-    { code: 'spanish', name: 'Spanish', keywords: ['ayúdame', 'alto', 'no'] },
-    { code: 'french', name: 'French', keywords: ['aidez-moi', 'arrêtez', 'non'] },
-    { code: 'arabic', name: 'Arabic', keywords: ['ساعدني', 'توقف', 'لا'] }
+    { code: 'bengali', name: 'Bengali', keywords: ['বাঁচাও', 'সাহায্য করো', 'না'] },
+    { code: 'gujarati', name: 'Gujarati', keywords: ['બચાવો', 'મદદ કરો', 'નહીં'] },
+    { code: 'bhojpuri', name: 'Bhojpuri', keywords: ['बचाव', 'मदद करा', 'नाहीं'] },
+    { code: 'punjabi', name: 'Punjabi', keywords: ['ਬਚਾਓ', 'ਮਦਦ ਕਰੋ', 'ਨਹੀਂ'] },
+    { code: 'marathi', name: 'Marathi', keywords: ['वाचवा', 'मदत करा', 'नाही'] },
+    { code: 'tamil', name: 'Tamil', keywords: ['உதவுங்கள்', 'காப்பாற்றுங்கள்', 'இல்லை'] }
   ];
 
   const callScenarios = [
@@ -102,6 +107,7 @@ const AIFeatures = () => {
         description: "No longer monitoring for distress signals.",
         variant: "default"
       });
+
     }
   };
 
