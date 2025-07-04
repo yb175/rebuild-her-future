@@ -1,7 +1,7 @@
 
-# Shltr - Domestic Violence Prevention Platform
+# Dhvani - Domestic Violence Prevention Platform
 
-Shltr is a comprehensive web platform designed to combat domestic violence against women using cutting-edge AI and blockchain technologies. The platform provides immediate support, secure evidence storage, and intelligent safety features to protect victims and prevent abuse.
+Dhvani is a comprehensive web platform designed to combat domestic violence against women using cutting-edge AI and blockchain technologies. The platform provides immediate support, secure evidence storage, and intelligent safety features to protect victims and prevent abuse.
 
 ## 🌟 Features
 
