@@ -153,9 +153,10 @@ The platform is fully responsive and optimized for:
 ### Currently Supported Languages
 - **English**: Primary language with full feature set
 - **Hindi**: Voice detection keywords and basic interface
-- **Spanish**: Voice detection keywords
-- **French**: Voice detection keywords  
-- **Arabic**: Voice detection keywords
+- **Marathi**: Voice detection keywords
+- **Bengali**: Voice detection keywords  
+- **Bhojpuri**: Voice detection keywords
+- **More regional languages are supported**
 
 ### Planned Language Expansion
 - Regional Indian languages (Tamil, Telugu, Bengali)
@@ -217,7 +218,7 @@ The platform is fully responsive and optimized for:
 ### Third-party APIs
 - **Twilio**: SMS and voice services
 - **Google Cloud Speech-to-Text**: Voice recognition
-- **OpenAI GPT**: Advanced chatbot responses
+- **Gemini**: Advanced chatbot responses
 - **Mapbox**: Location services and mapping
 - **AWS S3**: Secure file storage
 - **Stripe**: Payment processing for donations/support
